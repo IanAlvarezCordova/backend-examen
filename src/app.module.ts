@@ -6,18 +6,15 @@ import { DonacionModule } from './donaciones/donacion.module';
 
 @Module({
   imports: [
-   
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.POSTGRES_HOST,
-      port: parseInt(process.env.POSTGRES_PORT || '5432'),
-      username: process.env.POSTGRES_USERNAME,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DATABASE,
+      host: "localhost",
+      port: 5432,
+      username: "postgres",
+      password: "123",
+      database: "donaciones_db",
       autoLoadEntities: true,
       synchronize: true,
-
- 
     }),
   DonanteModule,
     BeneficiarioModule,
