@@ -8,7 +8,7 @@ export class Donacion {
   id: number;
 
   @Column()
-  descripcion: string; // Ejemplo: "10 kg de arroz"
+  descripcion: string; 
 
   @Column()
   fecha: Date;

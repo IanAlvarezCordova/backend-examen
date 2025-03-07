@@ -10,7 +10,7 @@ export class Beneficiario {
   nombre: string;
 
   @Column()
-  tipo: string; // Ejemplo: "Organización Social", "Comedor Comunitario"
+  tipo: string; 
 
   @Column()
   direccion: string;
@@ -19,5 +19,5 @@ export class Beneficiario {
   contacto: string;
 
   @OneToMany(() => Donacion, (donacion) => donacion.beneficiario)
-  donaciones: Donacion[]; // Relación inversa: un beneficiario tiene muchas donaciones
+  donaciones: Donacion[]; 
 }

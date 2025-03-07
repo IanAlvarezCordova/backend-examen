@@ -21,4 +21,20 @@ export class DonanteService {
     }
     return donante;
   }
+
+  async create(donanteData: Partial<Donante>): Promise<Donante> {
+    const donante = this.donanteRepository.create(donanteData);
+    return this.donanteRepository.save(donante);
+  }
+
+  async update(id: number, donanteData: Partial<Donante>): Promise<Donante> {
+    const donante = await this.findOne(id); 
+    Object.assign(donante, donanteData);
+    return this.donanteRepository.save(donante);
+  }
+
+  async delete(id: number): Promise<void> {
+    const donante = await this.findOne(id);
+    await this.donanteRepository.remove(donante);
+  }
 }

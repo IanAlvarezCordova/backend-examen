@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
 import { BeneficiarioService } from './beneficiario.service';
 import { Beneficiario } from './beneficiario.entity';
 
@@ -14,5 +14,20 @@ export class BeneficiarioController {
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Beneficiario> {
     return this.beneficiarioService.findOne(+id);
+  }
+
+  @Post()
+  async create(@Body() beneficiarioData: Partial<Beneficiario>): Promise<Beneficiario> {
+    return this.beneficiarioService.create(beneficiarioData);
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() beneficiarioData: Partial<Beneficiario>): Promise<Beneficiario> {
+    return this.beneficiarioService.update(+id, beneficiarioData);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string): Promise<void> {
+    return this.beneficiarioService.delete(+id);
   }
 }

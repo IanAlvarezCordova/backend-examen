@@ -21,4 +21,20 @@ export class BeneficiarioService {
     }
     return beneficiario;
   }
+
+  async create(beneficiarioData: Partial<Beneficiario>): Promise<Beneficiario> {
+    const beneficiario = this.beneficiarioRepository.create(beneficiarioData);
+    return this.beneficiarioRepository.save(beneficiario);
+  }
+
+  async update(id: number, beneficiarioData: Partial<Beneficiario>): Promise<Beneficiario> {
+    const beneficiario = await this.findOne(id);
+    Object.assign(beneficiario, beneficiarioData);
+    return this.beneficiarioRepository.save(beneficiario);
+  }
+
+  async delete(id: number): Promise<void> {
+    const beneficiario = await this.findOne(id);
+    await this.beneficiarioRepository.remove(beneficiario);
+  }
 }
