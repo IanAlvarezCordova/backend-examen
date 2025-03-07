@@ -11,9 +11,11 @@ export class BeneficiarioController {
     return this.beneficiarioService.findAll();
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Beneficiario> {
-    return this.beneficiarioService.findOne(+id);
+
+
+  @Get('sql') 
+  async findAllSql(): Promise<any[]> {
+    return this.beneficiarioService.findAllSql();
   }
 
   @Post()

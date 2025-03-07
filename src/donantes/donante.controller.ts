@@ -11,10 +11,13 @@ export class DonanteController {
     return this.donanteService.findAll();
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: string): Promise<Donante> {
-    return this.donanteService.findOne(+id);
+  @Get('sql') 
+  async findAllSql(): Promise<any[]> {
+    return this.donanteService.findAllSql();
   }
+
+
+
 
   @Post()
   async create(@Body() donanteData: Partial<Donante>): Promise<Donante> {

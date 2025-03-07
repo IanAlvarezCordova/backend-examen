@@ -14,6 +14,11 @@ export class DonanteService {
     return this.donanteRepository.find();
   }
 
+  async findAllSql(): Promise<any[]> {
+    
+    return this.donanteRepository.query('SELECT * FROM donantes');
+  }
+
   async findOne(id: number): Promise<Donante> {
     const donante = await this.donanteRepository.findOneBy({ id });
     if (!donante) {

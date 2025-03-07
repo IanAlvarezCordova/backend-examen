@@ -14,6 +14,11 @@ export class BeneficiarioService {
     return this.beneficiarioRepository.find();
   }
 
+  async findAllSql(): Promise<any[]> {
+    
+    return this.beneficiarioRepository.query('SELECT * FROM beneficiarios');
+  }
+
   async findOne(id: number): Promise<Beneficiario> {
     const beneficiario = await this.beneficiarioRepository.findOneBy({ id });
     if (!beneficiario) {
